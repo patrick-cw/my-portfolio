@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from '@/lib/utils';
 import Particles from '@/components/particles';
-import Header from '@/components/header';
+// import Header from '@/components/header';
 import Footer from '@/components/footer';
 import ThemeRegistry from '@/components/ThemeRegistry';
 
@@ -28,7 +28,7 @@ export default function RootLayout({
         <ThemeRegistry>
           <div className="relative z-0 flex min-h-screen flex-col bg-gradient-to-br from-black via-blue-900/20 to-black">
             <Particles />
-            <Header />
+            {/* <Header /> */}
             <main className="flex-1">{children}</main>
             <Footer />
           </div>

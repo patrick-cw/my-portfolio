@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from "@/components/ui/button";
 import { User, LineChart, Newspaper, ArrowDown } from "lucide-react";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -6,6 +8,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import Image from "next/image";
 import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Header from "./header";
 
 function FadingSeparator() {
   return (
@@ -249,10 +252,19 @@ function ArticlesSection() {
 }
 
 export default function Home() {
+  const handleScroll = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   return (
     <>
+    <Header handleScroll={handleScroll} />
       {/* Hero Section */}
-      <section className="container flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center text-center">
+      <section id="home" className="container flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center text-center">
         <div className="flex-grow flex flex-col items-center justify-center">
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
           Patrick's Portfolio
@@ -262,20 +274,15 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-y-6">
             <div className="flex items-center justify-center gap-x-4 flex-wrap gap-y-4">
-               <Button variant="default" asChild className="hover:bg-accent">
-                <Link href="/#about">
-                  About Me <User className="ml-2 h-4 w-4" />
-                </Link>
+              
+               <Button variant="default" onClick={(e) => handleScroll(e, 'about')} className="hover:bg-accent">
+                About Me <User className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="default" asChild className="hover:bg-accent">
-                <Link href="/#portfolio">
-                  View Projects <LineChart className="ml-2 h-4 w-4" />
-                </Link>
+              <Button variant="default"  onClick={(e) => handleScroll(e, 'portfolio')} className="hover:bg-accent">
+                View Projects <LineChart className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="default" asChild className="hover:bg-accent">
-                <Link href="/#articles">
-                  Read Articles <Newspaper className="ml-2 h-4 w-4" />
-                </Link>
+              <Button variant="default" onClick={(e) => handleScroll(e, 'articles')} className="hover:bg-accent">
+                Read Articles <Newspaper className="ml-2 h-4 w-4" />
               </Button>
             </div>
             <div className="flex items-center gap-4 mt-8">
@@ -292,7 +299,7 @@ export default function Home() {
           </div>
         </div>
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce">
-          <a href="#about" aria-label="Scroll to about section">
+          <a onClick={(e) => handleScroll(e, 'about')} href="#about" aria-label="Scroll to about section" className="cursor-pointer">
             <ArrowDown className="h-6 w-6 text-muted-foreground" />
           </a>
         </div>
