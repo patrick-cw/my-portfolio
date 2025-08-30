@@ -56,15 +56,20 @@ const articles = [
     }
 ];
 
-function getArticleData(slug: string) {
+async function getArticleData(slug: string) {
     return articles.find((a) => a.slug === slug);
 }
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-    const article = getArticleData(params.slug);
-
+export default async function ArticlePage({
+    params,
+  }: {
+    params: Promise<{ slug: string }>;
+  }) {
+    const { slug } = await params; // ✅ await params
+    const article = await getArticleData(slug);
+  
     if (!article) {
-        notFound();
+      notFound();
     }
 
     return (

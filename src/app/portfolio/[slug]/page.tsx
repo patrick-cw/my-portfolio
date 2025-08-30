@@ -73,48 +73,62 @@ const projects = [
     }
 ];
 
-function getProjectData(slug: string) {
+async function getProjectData(slug: string) {
     return projects.find((p) => p.slug === slug);
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-    const project = getProjectData(params.slug);
-
+export default async function ProjectPage({
+    params,
+  }: {
+    params: Promise<{ slug: string }>;
+  }) {
+    const { slug } = await params; // await required
+  
+    const project = await getProjectData(slug);
+  
     if (!project) {
-        notFound();
+      notFound();
     }
-
+  
     return (
-        <article className="relative py-24 sm:py-32 bg-transparent">
-            <div className="container">
-                <div className="max-w-4xl mx-auto">
-                    <Link href="/#portfolio" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8">
-                        <ArrowLeft size={16} />
-                        Back to Portfolio
-                    </Link>
-                    <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-headline mb-4">{project.title}</h1>
-
-                    <div className="flex flex-wrap gap-2 mb-8">
-                        {project.tags.map(tag => (
-                            <Badge key={tag} variant="secondary">{tag}</Badge>
-                        ))}
-                    </div>
-
-                    <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={1200}
-                        height={800}
-                        className="w-full rounded-lg object-cover shadow-lg mb-8"
-                        data-ai-hint={project.imageHint}
-                    />
-
-                    <div
-                      className="prose prose-invert prose-lg max-w-none text-muted-foreground"
-                      dangerouslySetInnerHTML={{ __html: project.content }}
-                    />
-                </div>
+      <article className="relative py-24 sm:py-32 bg-transparent">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <Link
+              href="/#portfolio"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8"
+            >
+              <ArrowLeft size={16} />
+              Back to Portfolio
+            </Link>
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-headline mb-4">
+              {project.title}
+            </h1>
+  
+            <div className="flex flex-wrap gap-2 mb-8">
+              {project.tags.map((tag) => (
+                <Badge key={tag} variant="secondary">
+                  {tag}
+                </Badge>
+              ))}
             </div>
-        </article>
+  
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={1200}
+              height={800}
+              className="w-full rounded-lg object-cover shadow-lg mb-8"
+              data-ai-hint={project.imageHint}
+            />
+  
+            <div
+              className="prose prose-invert prose-lg max-w-none text-muted-foreground"
+              dangerouslySetInnerHTML={{ __html: project.content }}
+            />
+          </div>
+        </div>
+      </article>
     );
-}
+  }
+  
