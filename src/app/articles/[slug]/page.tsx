@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import Header from '@/app/header';
+import BackButton from "@/components/BackButton";
 
 // This is a dummy data source. In a real application, you'd fetch this from a CMS or database.
 const articles = [
@@ -67,37 +69,37 @@ export default async function ArticlePage({
   }) {
     const { slug } = await params; // ✅ await params
     const article = await getArticleData(slug);
-  
+
     if (!article) {
-      notFound();
+        notFound();
     }
 
     return (
-        <article className="relative py-24 sm:py-32 bg-transparent">
-            <div className="container">
-                <div className="max-w-4xl mx-auto">
-                    <Link href="/#articles" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8">
-                        <ArrowLeft size={16} />
-                        Back to Articles
-                    </Link>
-                    <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-headline mb-2">{article.title}</h1>
-                    <p className="text-muted-foreground mb-8">{article.date}</p>
+        <>
+            <Header />
+            <article className="relative py-24 sm:py-32 bg-transparent">
+                <div className="container">
+                    <div className="max-w-4xl mx-auto">
+                        <BackButton target="articles" label="Back to Articles" />
+                        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-headline mb-2">{article.title}</h1>
+                        <p className="text-muted-foreground mb-8">{article.date}</p>
 
-                    <Image
-                        src={article.image}
-                        alt={article.title}
-                        width={1200}
-                        height={800}
-                        className="w-full rounded-lg object-cover shadow-lg mb-8"
-                        data-ai-hint={article.imageHint}
-                    />
+                        <Image
+                            src={article.image}
+                            alt={article.title}
+                            width={1200}
+                            height={800}
+                            className="w-full rounded-lg object-cover shadow-lg mb-8"
+                            data-ai-hint={article.imageHint}
+                        />
 
-                    <div
-                        className="prose prose-invert prose-lg max-w-none text-muted-foreground"
-                        dangerouslySetInnerHTML={{ __html: article.content }}
-                    />
+                        <div
+                            className="prose prose-invert prose-lg max-w-none text-muted-foreground"
+                            dangerouslySetInnerHTML={{ __html: article.content }}
+                        />
+                    </div>
                 </div>
-            </div>
-        </article>
+            </article>
+        </>
     );
 }

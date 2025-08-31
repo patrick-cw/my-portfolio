@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Header from "./header";
+import { useEffect } from 'react';
 
 function FadingSeparator() {
   return (
@@ -252,6 +253,16 @@ function ArticlesSection() {
 }
 
 export default function Home() {
+  useEffect(() => {
+    if (sessionStorage.getItem("scrollToArticles") === "true") {
+    sessionStorage.removeItem("scrollToArticles");
+    document.getElementById("articles")?.scrollIntoView({ behavior: "smooth" });
+    }
+    if (sessionStorage.getItem("scrollToPortfolio") === "true") {
+    sessionStorage.removeItem("scrollToPortfolio");
+    document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
   const handleScroll = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
@@ -262,7 +273,7 @@ export default function Home() {
   
   return (
     <>
-    <Header handleScroll={handleScroll} />
+     <Header handleScroll={handleScroll} />
       {/* Hero Section */}
       <section id="home" className="container flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center text-center">
         <div className="flex-grow flex flex-col items-center justify-center">
