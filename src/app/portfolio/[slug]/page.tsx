@@ -98,7 +98,7 @@ export default async function ProjectPage({
             <article className="relative py-24 sm:py-32 bg-transparent">
                 <div className="container">
                     <div className="max-w-4xl mx-auto">
-                        <BackButton target="portfolio" label="Back to Articles" />
+                        <BackButton target="portfolio" label="Back to Portfolio" />
                         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-headline mb-4">{project.title}</h1>
 
                         <div className="flex flex-wrap gap-2 mb-8">

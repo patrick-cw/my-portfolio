@@ -255,14 +255,23 @@ function ArticlesSection() {
 export default function Home() {
   useEffect(() => {
     if (sessionStorage.getItem("scrollToArticles") === "true") {
-    sessionStorage.removeItem("scrollToArticles");
-    document.getElementById("articles")?.scrollIntoView({ behavior: "smooth" });
+      sessionStorage.removeItem("scrollToArticles");
+      document.getElementById("articles")?.scrollIntoView({ behavior: "smooth" });
     }
     if (sessionStorage.getItem("scrollToPortfolio") === "true") {
-    sessionStorage.removeItem("scrollToPortfolio");
-    document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+      sessionStorage.removeItem("scrollToPortfolio");
+      document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+    }
+    if (sessionStorage.getItem("scrollToAbout") === "true") {
+      sessionStorage.removeItem("scrollToAbout");
+      document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+    }
+    if (sessionStorage.getItem("scrollToTop") === "true") {
+      sessionStorage.removeItem("scrollToTop");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, []);
+  
   const handleScroll = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
