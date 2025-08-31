@@ -297,13 +297,13 @@ export default function Home() {
               </Button>
             </div>
             <div className="flex items-center gap-4 mt-8">
-              <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <Link href="https://x.com/patrickcw_" target="_blank" rel="noopener noreferrer" aria-label="X">
                 <XIcon className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
               </Link>
-              <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Link href="https://www.linkedin.com/in/patrick-cw/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <LinkedInIcon className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
               </Link>
-              <Link href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <Link href="https://github.com/patrick-cw" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <GitHubIcon className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
               </Link>
             </div>
