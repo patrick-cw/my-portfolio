@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import Header from '@/app/header';
+import Header from '@/components/header';
 import BackButton from "@/components/BackButton";
 
 // This is a dummy data source. In a real application, you'd fetch this from a CMS or database.

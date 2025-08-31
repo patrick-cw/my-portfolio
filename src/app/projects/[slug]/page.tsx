@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import Header from '@/app/header';
+import Header from '@/components/header';
 import BackButton from "@/components/BackButton";
 
 // This is a dummy data source. In a real application, you'd fetch this from a CMS or database.
@@ -98,7 +98,7 @@ export default async function ProjectPage({
             <article className="relative py-24 sm:py-32 bg-transparent">
                 <div className="container">
                     <div className="max-w-4xl mx-auto">
-                        <BackButton target="portfolio" label="Back to Portfolio" />
+                        <BackButton target="projects" label="Back to Projects" />
                         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl font-headline mb-4">{project.title}</h1>
 
                         <div className="flex flex-wrap gap-2 mb-8">

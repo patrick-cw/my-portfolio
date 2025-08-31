@@ -1,14 +1,14 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import { User, LineChart, Newspaper, ArrowDown } from "lucide-react";
+import { User, LineChart, Newspaper, ArrowUp, ArrowDown } from "lucide-react";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Image from "next/image";
 import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import Header from "./header";
+import Header from '@/components/header';
 import { useEffect } from 'react';
 
 function FadingSeparator() {
@@ -18,11 +18,28 @@ function FadingSeparator() {
     </div>
   )
 }
-
+const handleScroll = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, targetId: string) => {
+  e.preventDefault();
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 // About Section Component
 function AboutSection() {
   return (
     <section id="about" className="relative min-h-screen flex flex-col justify-center">
+        {/* <div className="absolute top-4 left-1/2 -translate-x-1/2" style={{ top: "6rem" }}>
+            <a
+              onClick={(e) => handleScroll(e, "home")}
+              href="#home"
+              aria-label="Scroll to home section"
+              className="cursor-pointer flex flex-col items-center animate-bounce"
+            >
+              <ArrowUp className="h-8 w-8 text-muted-foreground" />
+              <span className="mt-1 text-sm text-muted-foreground">Home</span>
+            </a>
+          </div> */}
       <div className="container">
       <div className="grid grid-cols-1 items-center gap-y-16 lg:grid-cols-2 lg:gap-x-2">
           <div className="lg:col-span-7">
@@ -48,19 +65,30 @@ function AboutSection() {
           </div>
         </div>
       </div>
+        {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2" >
+            <a
+              onClick={(e) => handleScroll(e, "projects")}
+              href="#projects"
+              aria-label="Scroll to projects section"
+              className="cursor-pointer flex flex-col items-center animate-bounce"
+            >
+              <ArrowDown className="h-8 w-8 text-muted-foreground" />
+              <span className="mt-1 text-sm text-muted-foreground">Projects</span>
+            </a>
+          </div> */}
     </section>
   );
 }
 
-// Portfolio Section Component
-function PortfolioSection() {
+// projects Section Component
+function ProjectsSection() {
   const projects = [
     {
       title: "xG-Based Performance Analysis",
       description: "A deep dive into Expected Goals (xG) metrics to evaluate striker efficiency across Europe's top 5 leagues.",
       image: "https://picsum.photos/600/400?random=1",
       tags: ["Data Analysis", "Python", "Tableau"],
-      link: "/portfolio/xg-based-performance-analysis",
+      link: "/projects/xg-based-performance-analysis",
       imageHint: "soccer chart"
     },
     {
@@ -68,7 +96,7 @@ function PortfolioSection() {
       description: "Visualizing defensive actions (tackles, interceptions) to identify team pressing styles and defensive solidity.",
       image: "https://picsum.photos/600/400?random=2",
       tags: ["Data-Viz", "R", "Statistics"],
-      link: "/portfolio/defensive-actions-mapping",
+      link: "/projects/defensive-actions-mapping",
       imageHint: "soccer field"
     },
     {
@@ -76,7 +104,7 @@ function PortfolioSection() {
       description: "Analyzing passing networks to understand team shape, key player connections, and ball progression patterns.",
       image: "https://picsum.photos/600/400?random=3",
       tags: ["Network Analysis", "Gephi", "Tableau"],
-      link: "/portfolio/passing-network-analysis",
+      link: "/projects/passing-network-analysis",
       imageHint: "soccer tactics"
     },
     {
@@ -84,7 +112,7 @@ function PortfolioSection() {
       description: "A data-driven model to identify undervalued players based on performance metrics and market values.",
       image: "https://picsum.photos/600/400?random=4",
       tags: ["Machine Learning", "Python", "Scouting"],
-      link: "/portfolio/player-recruitment-model",
+      link: "/projects/player-recruitment-model",
       imageHint: "soccer player celebrating"
     },
     {
@@ -92,7 +120,7 @@ function PortfolioSection() {
       description: "A web-based dashboard allowing users to explore shot data from various competitions interactively.",
       image: "https://picsum.photos/600/400?random=5",
       tags: ["Web Dev", "React", "D3.js"],
-      link: "/portfolio/interactive-shot-map-dashboard",
+      link: "/projects/interactive-shot-map-dashboard",
       imageHint: "soccer dashboard"
     },
     {
@@ -100,16 +128,27 @@ function PortfolioSection() {
       description: "A comprehensive study of the 4-3-3 vs 4-4-2 formations, showcasing strengths and weaknesses with data visualization.",
       image: "https://picsum.photos/600/400?random=6",
       tags: ["Tactics", "Data-Viz", "Analysis"],
-      link: "/portfolio/tactical-formations-analysis",
+      link: "/projects/tactical-formations-analysis",
       imageHint: "soccer strategy board"
     }
   ];
 
   return (
-    <section id="portfolio" className="relative min-h-screen flex flex-col justify-center">
+    <section id="projects" className="relative min-h-screen flex flex-col justify-center">
+          {/* <div className="absolute top-4 left-1/2 -translate-x-1/2" style={{ top: "6rem" }}>
+              <a
+                onClick={(e) => handleScroll(e, "about")}
+                href="#about"
+                aria-label="Scroll to about section"
+                className="cursor-pointer flex flex-col items-center animate-bounce"
+              >
+                <ArrowUp className="h-8 w-8 text-muted-foreground" />
+                <span className="mt-1 text-sm text-muted-foreground">About Me</span>
+              </a>
+            </div> */}
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">My Portfolio</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">My Projects</h2>
             <p className="mt-2 text-lg leading-8 text-muted-foreground">
               A selection of projects that showcase my skills in football analytics.
             </p>
@@ -159,11 +198,22 @@ function PortfolioSection() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="-left-12 h-10 w-10 bg-secondary hover:bg-primary" />
-              <CarouselNext className="-right-12 h-10 w-10 bg-secondary hover:bg-primary" />
+              <CarouselPrevious className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-8" />
+              <CarouselNext className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-8 " />
             </Carousel>
           </div>
         </div>
+        {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2" >
+              <a
+                onClick={(e) => handleScroll(e, "articles")}
+                href="#articles"
+                aria-label="Scroll to articles section"
+                className="cursor-pointer flex flex-col items-center animate-bounce"
+              >
+                <ArrowDown className="h-8 w-8 text-muted-foreground" />
+                <span className="mt-1 text-sm text-muted-foreground">Articles</span>
+              </a>
+            </div> */}
     </section>
   );
 }
@@ -203,8 +253,21 @@ function ArticlesSection() {
     ];
 
   return (
+    
       <section id="articles" className="relative min-h-screen flex flex-col justify-center">
+         
           <div className="container">
+          {/* <div className="absolute top-4 left-1/2 -translate-x-1/2" style={{ top: "6rem" }}>
+              <a
+                onClick={(e) => handleScroll(e, "projects")}
+                href="#projects"
+                aria-label="Scroll to projects section"
+                className="cursor-pointer flex flex-col items-center animate-bounce"
+              >
+                <ArrowUp className="h-8 w-8 text-muted-foreground" />
+                <span className="mt-1 text-sm text-muted-foreground">Projects</span>
+              </a>
+            </div> */}
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">Latest Articles</h2>
               <p className="mt-2 text-lg leading-8 text-muted-foreground">
@@ -243,11 +306,22 @@ function ArticlesSection() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                 <CarouselPrevious className="-left-12 h-10 w-10 bg-secondary hover:bg-primary" />
-                 <CarouselNext className="-right-12 h-10 w-10 bg-secondary hover:bg-primary" />
+                <CarouselPrevious className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-8" />
+                <CarouselNext className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-8 " />
               </Carousel>
             </div>
           </div>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2" >
+              <a
+                onClick={(e) => handleScroll(e, "home")}
+                href="#home"
+                aria-label="Scroll to home section"
+                className="cursor-pointer flex flex-col items-center animate-bounce"
+              >
+                <ArrowUp className="h-8 w-8 text-muted-foreground" />
+                <span className="mt-1 text-sm text-muted-foreground">Back to Top</span>
+              </a>
+            </div>
       </section>
   );
 }
@@ -258,9 +332,9 @@ export default function Home() {
       sessionStorage.removeItem("scrollToArticles");
       document.getElementById("articles")?.scrollIntoView({ behavior: "smooth" });
     }
-    if (sessionStorage.getItem("scrollToPortfolio") === "true") {
-      sessionStorage.removeItem("scrollToPortfolio");
-      document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" });
+    if (sessionStorage.getItem("scrollToProjects") === "true") {
+      sessionStorage.removeItem("scrollToProjects");
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
     }
     if (sessionStorage.getItem("scrollToAbout") === "true") {
       sessionStorage.removeItem("scrollToAbout");
@@ -271,14 +345,6 @@ export default function Home() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, []);
-  
-  const handleScroll = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
   
   return (
     <>
@@ -292,13 +358,14 @@ export default function Home() {
           <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-xl mx-auto">
           Welcome to the portfolio of Patrick Cipta Winata. Exploring the World Through Data, Machine Learning, and Analytics.
           </p>
+          
           <div className="mt-10 flex flex-col items-center justify-center gap-y-6">
             <div className="flex items-center justify-center gap-x-4 flex-wrap gap-y-4">
               
                <Button variant="default" onClick={(e) => handleScroll(e, 'about')} className="hover:bg-accent">
                 About Me <User className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="default"  onClick={(e) => handleScroll(e, 'portfolio')} className="hover:bg-accent">
+              <Button variant="default"  onClick={(e) => handleScroll(e, 'projects')} className="hover:bg-accent">
                 View Projects <LineChart className="ml-2 h-4 w-4" />
               </Button>
               <Button variant="default" onClick={(e) => handleScroll(e, 'articles')} className="hover:bg-accent">
@@ -317,17 +384,14 @@ export default function Home() {
               </Link>
             </div>
           </div>
+          
         </div>
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce">
-          <a onClick={(e) => handleScroll(e, 'about')} href="#about" aria-label="Scroll to about section" className="cursor-pointer">
-            <ArrowDown className="h-6 w-6 text-muted-foreground" />
-          </a>
-        </div>
+        
       </section>
       <FadingSeparator />
       <AboutSection />
       <FadingSeparator />
-      <PortfolioSection />
+      <ProjectsSection />
       <FadingSeparator />
       <ArticlesSection />
     </>

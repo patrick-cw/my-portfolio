@@ -3,13 +3,12 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from '@/lib/utils';
 import Particles from '@/components/particles';
-import Header from '@/app/header';
 import Footer from '@/components/footer';
 import ThemeRegistry from '@/components/ThemeRegistry';
 
 
 export const metadata: Metadata = {
-  title: "Goal Analysis Hub: Alex Doe's Portfolio",
+  title: "Patrick's Portfolio",
   description: 'A portfolio showcasing football analytics projects, articles, and more.',
 };
 

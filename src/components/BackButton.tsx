@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 interface BackButtonProps {
-  target: "articles" | "portfolio";
+  target: "articles" | "projects";
   label: string;
 }
 
@@ -12,8 +12,8 @@ export default function BackButton({ target, label }: BackButtonProps) {
   const handleClick = () => {
     if (target === "articles") {
       sessionStorage.setItem("scrollToArticles", "true");
-    } else if (target === "portfolio") {
-      sessionStorage.setItem("scrollToPortfolio", "true");
+    } else if (target === "projects") {
+      sessionStorage.setItem("scrollToProjects", "true");
     }
   };
 
