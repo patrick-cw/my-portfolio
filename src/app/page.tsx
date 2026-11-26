@@ -150,7 +150,10 @@ function ProjectsSection() {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">My Projects</h2>
             <p className="mt-2 text-lg leading-8 text-muted-foreground">
-              A selection of projects that showcase my skills in football analytics.
+              A selection of projects that showcase my skills in data analytics.
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground italic">
+              Note: Projects are still dummy / placeholder data.
             </p>
           </div>
           <div className="mt-16">
@@ -198,8 +201,8 @@ function ProjectsSection() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-8" />
-              <CarouselNext className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-8 " />
+              <CarouselPrevious className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-7" />
+              <CarouselNext className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-7 " />
             </Carousel>
           </div>
         </div>
@@ -271,7 +274,10 @@ function ArticlesSection() {
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">Latest Articles</h2>
               <p className="mt-2 text-lg leading-8 text-muted-foreground">
-                My thoughts and findings on the world of football analytics.
+                My thoughts and findings on the world of data analytics.
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground italic">
+                Note: Articles are still dummy / placeholder data.
               </p>
             </div>
             <div className="mt-16">
@@ -306,8 +312,8 @@ function ArticlesSection() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-8" />
-                <CarouselNext className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-8 " />
+                <CarouselPrevious className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-7" />
+                <CarouselNext className="-right-12 h-10 w-10 bg-secondary transition-all duration-300 hover:bg-primary hover:-translate-y-7 " />
               </Carousel>
             </div>
           </div>
